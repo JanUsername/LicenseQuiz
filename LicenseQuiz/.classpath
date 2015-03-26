@@ -13,5 +13,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/Sascha/git/LicenseQuiz/LicenseQuiz/postgresql-9.4-1201.jdbc4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sascha/git/LicenseQuiz/LicenseQuiz/WebContent/WEB-INF/lib/jstl.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sascha/git/LicenseQuiz/LicenseQuiz/WebContent/WEB-INF/lib/standard.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
