@@ -156,7 +156,7 @@ public class QuizBean
 	public int getInPercent() {
 		double ret = -1;
 		if (this.getResult() >= 0 && this.getMaximalResult() > 0)
-			ret = this.getResult()/this.getMaximalResult()*100;
+			ret = (double)this.getResult()/(double)this.getMaximalResult()*100;
 		return (int)ret;
 	}
 
