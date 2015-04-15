@@ -12,6 +12,7 @@
 </head>
 <body>
 <div class="jumbotron">
+<button onclick="location.href='${pageContext.request.contextPath}/quiz'">Start Exam</button>
 <h4>Driver licence</h4>
 <p>Question numbero 1</p>
 </div>
