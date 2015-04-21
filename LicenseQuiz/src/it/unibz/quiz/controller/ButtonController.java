@@ -80,8 +80,14 @@ public class ButtonController extends HttpServlet {
 				quiz.setCurrentQuestionNo(Integer.parseInt(request.getParameter("notAnswered")));
 			}
 			
+			if(request.getParameter("finish") != null){
+				request.getRequestDispatcher("/EvaluateQuiz.jsp").forward(request,
+						response);
+			} else {
+			
 			request.getRequestDispatcher("/LicenseQuiz.jsp").forward(request,
 					response);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

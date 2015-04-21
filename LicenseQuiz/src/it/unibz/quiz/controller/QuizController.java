@@ -30,7 +30,7 @@ public class QuizController extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		try {
-
+			session.removeAttribute("quiz");
 			session = request.getSession();
 			System.out.println("Setting Exam ");
 			QuizBean quiz = new QuizBean();
