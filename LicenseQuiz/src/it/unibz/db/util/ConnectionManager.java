@@ -9,7 +9,7 @@ public class ConnectionManager {
       try {
          Class.forName("org.postgresql.Driver");
          c = DriverManager
-            .getConnection("jdbc:postgresql://localhost:5432/quiz",
+            .getConnection("jdbc:postgresql://localhost:5433/postgres",
             "postgres", "masterkey");
       } catch (Exception e) {
          e.printStackTrace();

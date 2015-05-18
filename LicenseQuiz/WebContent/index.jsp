@@ -15,8 +15,7 @@
 </head>
 <body>
 	<div class="jumbotron">
-		<button
-			onclick="location.href='${pageContext.request.contextPath}/quiz'">Start
+		<button	onclick="location.href='${pageContext.request.contextPath}/quiz'">Start
 			Exam</button>
 	</div>
 	<!-- question + img -->

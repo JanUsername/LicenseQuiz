@@ -24,6 +24,38 @@
 	</head>
 	<body>
 		<h1>License quiz</h1>
+		<div>Quiz stopps in <span id="time"></span> minutes!</div>
+		<script type="text/javascript" >
+		function startTimer(duration, display) {
+		    var start = Date.now(),
+		        diff,
+		        minutes,
+		        seconds;
+		    	var startSec = start.getSeconds();
+		    	var startMin = start.getMinutes();
+		    function timer() {
+		        diff = duration - (((Date.now() - start) / 1000) | 0);
+		        minutes = (diff / 60) | 0;
+		        seconds = (diff % 60) | 0;
+
+		        minutes = minutes < 10 ? "0" + minutes : minutes;
+		        seconds = seconds < 10 ? "0" + seconds : seconds;
+				if (minutes == 00 && seconds == 00){
+					alert();
+				}
+		        display.textContent = minutes + ":" + seconds; 
+
+		    };
+		    timer();
+		    setInterval(timer, 1000);
+		}
+
+		window.onload = function () {
+		    var timerStartTime = 60 * 30,
+		        display = document.querySelector('#time');
+		    startTimer(timerStartTime, display);
+		};
+		</script>
 		<form action="buttonLis" method="get">
 			<table width="100%">
 				<tr>
