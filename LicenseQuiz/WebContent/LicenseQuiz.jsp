@@ -14,7 +14,7 @@
 		<script type="text/javascript" >
 		function notFinishedYet()
 		{
-			return confirm("Attention ! The quiz form is not finished yet. Proceed anyway ?");
+			//return confirm("Attention ! The quiz form is not finished yet. Proceed anyway ?");
 		}
 		function secureFinish()
 		{
@@ -24,45 +24,14 @@
 	</head>
 	<body>
 		<h1>License quiz</h1>
-		<div>Quiz stopps in <span id="time"></span> minutes!</div>
-		<script type="text/javascript" >
-		function startTimer(duration, display) {
-		    var start = Date.now(),
-		        diff,
-		        minutes,
-		        seconds;
-		    	var startSec = start.getSeconds();
-		    	var startMin = start.getMinutes();
-		    function timer() {
-		        diff = duration - (((Date.now() - start) / 1000) | 0);
-		        minutes = (diff / 60) | 0;
-		        seconds = (diff % 60) | 0;
-
-		        minutes = minutes < 10 ? "0" + minutes : minutes;
-		        seconds = seconds < 10 ? "0" + seconds : seconds;
-				if (minutes == 00 && seconds == 00){
-					alert();
-				}
-		        display.textContent = minutes + ":" + seconds; 
-
-		    };
-		    timer();
-		    setInterval(timer, 1000);
-		}
-
-		window.onload = function () {
-		    var timerStartTime = 60 * 30,
-		        display = document.querySelector('#time');
-		    startTimer(timerStartTime, display);
-		};
-		</script>
-		<form action="buttonLis" method="get">
+		<div>Quiz stops in <span id="divCounter"></span>: <span id="divCounter2"></span> minutes!</div>
+		<form id="myform" name="myform" action="buttonLis" method="get">
 			<table width="100%">
 				<tr>
 					<td rowspan="2">
 						<c:choose>
 							<c:when test="${sessionScope.quiz.noNotAnsQuestion ne 0 }">
-								<input type="submit" name="finish" class="btn btn-primary btn-lg" value="End quiz"
+								<input type="submit" id="finish" name="finish" class="btn btn-primary btn-lg" value="End quiz"
 									 onclick="return notFinishedYet()" >					
 							</c:when>
 							<c:otherwise>
@@ -190,3 +159,43 @@
 		</form>
 	</body>
 </html>
+
+<script type="text/javascript">
+    if(localStorage.getItem("counter")){
+	      if(localStorage.getItem("counter") <= 0){
+	        var value = 4;
+	        var minutes = Math.round((value - 30)/60);
+	        var remainingSeconds = value % 60;
+	      }else{
+	        var value = localStorage.getItem("counter");
+	        var minutes = Math.round((value - 30)/60);
+	        var remainingSeconds = value % 60;
+	      }
+	    }else{
+	      var value = 300;
+	      var minutes = Math.round((value - 30)/60);
+	      var remainingSeconds = value % 60;
+	    }
+    document.getElementById('divCounter').innerHTML = minutes;
+    document.getElementById('divCounter2').innerHTML = remainingSeconds;
+
+    var counter = function (){
+      if(value <= 0){
+    	  document.getElementById('finish').click();
+        localStorage.setItem("counter", 300);
+        value = 300;
+        var minutes = Math.round((value - 30)/60);
+        var remainingSeconds = value % 60;
+        
+      }else{
+        value = parseInt(value)-1;
+        localStorage.setItem("counter", value);
+        var minutes = Math.round((value - 30)/60);
+        var remainingSeconds = value % 60;
+      }
+      document.getElementById('divCounter').innerHTML = minutes;
+      document.getElementById('divCounter2').innerHTML = remainingSeconds;
+    };
+
+    var interval = setInterval(function (){counter();}, 1000);
+  </script>

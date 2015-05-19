@@ -18,7 +18,7 @@
 				In Percentage: ${sessionScope.quiz.inPercent}%.
 			</td>
 			<td rowspan="3">
-				<input type="submit" name="new" value="New Quiz">
+				<input type="submit" name="new" value="New Quiz" onclick="resetCounter()">
 			</td>
 		</tr>
 		<tr>
@@ -268,3 +268,9 @@
 	</table>
 	<hr>
 </c:forEach>
+
+<script>
+	function resetCounter(){
+		localStorage.setItem("counter",300);
+	}
+</script>
