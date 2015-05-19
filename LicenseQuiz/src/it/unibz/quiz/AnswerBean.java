@@ -1,5 +1,8 @@
 package it.unibz.quiz;
 
+import com.memetix.mst.language.Language;
+import com.memetix.mst.translate.Translate;
+
 public class AnswerBean
 {
 	private String answertext = null;
@@ -15,9 +18,12 @@ public class AnswerBean
 		}
 	}
 	
+	public String getAnswertext () throws Exception{
+		Translate.setClientId("LicenseQuiz");
+        Translate.setClientSecret("tdh3lRzvruel4InSIW7/gKUmsxB1AHU8OvMxLWlgVLU=");
 
-	public String getAnswertext (){
-		return this.answertext;
+        String translatedText = Translate.execute(this.answertext, Language.GERMAN, Language.ENGLISH);
+		return translatedText;
 	}
 
 	public boolean get_true() {
