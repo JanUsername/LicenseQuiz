@@ -24,12 +24,13 @@ public class QuestionBean
 	
 
 	public String getQuestiontext() throws Exception {
-		Translate.setClientId("LicenseQuiz");
-        Translate.setClientSecret("tdh3lRzvruel4InSIW7/gKUmsxB1AHU8OvMxLWlgVLU=");
-
-        String translatedText = Translate.execute(questiontext, Language.GERMAN, Language.ENGLISH);
-
-		return translatedText;
+//		Translate.setClientId("LicenseQuiz");
+//        Translate.setClientSecret("tdh3lRzvruel4InSIW7/gKUmsxB1AHU8OvMxLWlgVLU=");
+//
+//        String translatedText = Translate.execute(questiontext, Language.GERMAN, Language.ENGLISH);
+//
+//		return translatedText;
+		return questiontext;
 	}
 
 	public String getPic() {
