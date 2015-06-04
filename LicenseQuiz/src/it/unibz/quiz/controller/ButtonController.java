@@ -12,9 +12,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
+
 @WebServlet("/buttonLis")
 public class ButtonController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Logger logger = null;
+	
+	@Override
+	public void init() throws ServletException {
+		// TODO Auto-generated method stub
+		super.init();
+		
+		logger = Logger.getRootLogger();
+		PatternLayout layout = new PatternLayout("%d{HH:mm:ss}  %-5.5p  %t %m%n");
+		logger.addAppender(new ConsoleAppender(layout));
+	}	
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -24,10 +41,7 @@ public class ButtonController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-		String applicationContextPath = request.getContextPath();
-		
+		// TODO Auto-generated method stub		
 		
 		HttpSession session = request.getSession();
 		try {
@@ -83,6 +97,8 @@ public class ButtonController extends HttpServlet {
 			if(request.getParameter("finish") != null){
 				request.getRequestDispatcher("/EvaluateQuiz.jsp").forward(request,
 						response);
+				logger.setLevel(Level.TRACE);
+				logger.trace("Quiz finished");
 			} else {
 			
 			request.getRequestDispatcher("/LicenseQuiz.jsp").forward(request,
@@ -90,6 +106,8 @@ public class ButtonController extends HttpServlet {
 			}
 
 		} catch (Exception e) {
+			logger.setLevel(Level.ERROR);
+			logger.trace("Error during form manipulation");
 			e.printStackTrace();
 		}
 	}
