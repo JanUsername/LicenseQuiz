@@ -19,12 +19,12 @@ public class AnswerBean
 	}
 	
 	public String getAnswertext () throws Exception{
-//		Translate.setClientId("LicenseQuiz");
-//        Translate.setClientSecret("tdh3lRzvruel4InSIW7/gKUmsxB1AHU8OvMxLWlgVLU=");
-//
-//        String translatedText = Translate.execute(this.answertext, Language.GERMAN, Language.ENGLISH);
-//		return translatedText;
-		return this.answertext;
+		Translate.setClientId("LicenseQuiz");
+        Translate.setClientSecret("tdh3lRzvruel4InSIW7/gKUmsxB1AHU8OvMxLWlgVLU=");
+
+        String translatedText = Translate.execute(this.answertext, Language.GERMAN, Language.ENGLISH);
+		return translatedText;
+//		return this.answertext;
 	}
 
 	public boolean get_true() {

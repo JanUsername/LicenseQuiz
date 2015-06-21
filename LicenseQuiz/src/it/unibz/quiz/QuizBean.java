@@ -162,7 +162,7 @@ public class QuizBean
 
 	public boolean getPassed() {
 		boolean ret = false;
-		if ((double)((double) this.getResult()/this.getMaximalResult()) >= 86.666)
+		if ((double)((double) this.getResult()/this.getMaximalResult())*100 >= 86.666)
 			ret = true;
 		return ret;
 	}
